@@ -1,11 +1,8 @@
 package com.example.InaiProject.controllers;
-
 import com.example.InaiProject.model.SearchParametersVacancy;
 import com.example.InaiProject.services.VacanciesService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
