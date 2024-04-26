@@ -92,7 +92,9 @@
                                 <input type="text" id="userInput" class="form-control mb-3" placeholder="Задайте ваш вопрос...">
                                 <button onclick="sendMessage()" class="btn btn-primary">Отправить</button>
                             </div>
+                            <div th:if="${response}" class="message"><strong>ИИ:</strong> <span th:text="${response}"></span></div>
                         </div>
+
                     </div>
                 </div>
             </div>
