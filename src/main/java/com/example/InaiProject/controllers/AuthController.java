@@ -32,11 +32,6 @@ public class AuthController {
         return "register";
     }
 
-    @RequestMapping("/index")
-    public String showMainPage() {
-        return "index";
-    }
-
     @GetMapping("/forgot-password")
     public String showForgotPasswordForm(Model model) {
         return "forgot-password";
