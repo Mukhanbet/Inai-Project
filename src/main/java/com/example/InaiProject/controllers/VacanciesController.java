@@ -13,17 +13,17 @@ public class VacanciesController {
 
 
     @GetMapping
-    public ResponseEntity getAllVacancies() {
+    public ResponseEntity<?> getAllVacancies() {
         return ResponseEntity.ok(vacanciesService.getAllVacancies().getItems());
     }
 
     @PostMapping
-    public ResponseEntity getAllVacancies(@RequestBody SearchParametersVacancy params) {
+    public ResponseEntity<?> getAllVacancies(@RequestBody SearchParametersVacancy params) {
         return ResponseEntity.ok(vacanciesService.getAllVacancies(params).getItems());
     }
 
     @GetMapping("/{vacId}")
-    public ResponseEntity getVacancyById(@PathVariable String vacId) {
+    public ResponseEntity<?> getVacancyById(@PathVariable String vacId) {
         return ResponseEntity.ok(vacanciesService.getVacancyById(vacId));
     }
 }
