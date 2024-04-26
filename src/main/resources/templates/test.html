@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест</title>
+</head>
+<body>
+<h1>Тест из 10 вопросов</h1>
+<form th:action="@{/submit-test}" method="post">
+    <div th:each="i : ${#numbers.sequence(1, 10)}">
+        <p th:text="'Вопрос ' + ${i} + '?'"></p>
+        <label><input type="radio" th:name="|question${i}|" value="0"> Вариант 1 (0 баллов)</label>
+        <label><input type="radio" th:name="|question${i}|" value="1"> Вариант 2 (1 балл)</label>
+        <label><input type="radio" th:name="|question${i}|" value="2"> Вариант 3 (2 балла)</label>
+        <label><input type="radio" th:name="|question${i}|" value="2"> Вариант 4 (2 балла)</label>
+    </div>
+    <button type="submit">Подсчитать результаты</button>
+</form>
+</body>
+</html>
