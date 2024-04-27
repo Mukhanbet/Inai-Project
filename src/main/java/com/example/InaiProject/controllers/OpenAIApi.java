@@ -6,13 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +37,27 @@ public class OpenAIApi {
         } else {
             responseMap.put("response", "No response received");
         }
+        return responseMap;
+    }
+
+    // Определите точку входа для загрузки файла вместе с запросом
+    @PostMapping("/chat-with-file")
+    public Map<String, String> handleFileUpload(@RequestParam("prompt") String prompt,
+                                                @RequestParam("file") MultipartFile file) throws IOException {
+        // Обработка файла...
+        // Вы можете сохранить файл, обработать его или сделать что-то еще в зависимости от вашей бизнес-логики
+
+        // После обработки файла продолжите с отправкой запроса в вашу модель ChatGPT
+        ChatGPTRequest chatGPTRequest = new ChatGPTRequest(modelName, prompt);
+        ChatGPTResponse chatGPTResponse = template.postForObject(apiURL, chatGPTRequest, ChatGPTResponse.class);
+
+        Map<String, String> responseMap = new HashMap<>();
+        if (chatGPTResponse != null && !chatGPTResponse.getChoices().isEmpty() && chatGPTResponse.getChoices().get(0).getMessage() != null) {
+            responseMap.put("response", chatGPTResponse.getChoices().get(0).getMessage().getContent());
+        } else {
+            responseMap.put("response", "No response received");
+        }
+
         return responseMap;
     }
 }
