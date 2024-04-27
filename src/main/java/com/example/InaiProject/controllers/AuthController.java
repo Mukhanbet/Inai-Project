@@ -1,8 +1,11 @@
 package com.example.InaiProject.controllers;
 
 import com.example.InaiProject.dto.auth.AuthRegisterRequest;
+import com.example.InaiProject.model.MailType;
+import com.example.InaiProject.model.User;
 import com.example.InaiProject.repository.UserRepository;
 import com.example.InaiProject.services.AuthService;
+import com.example.InaiProject.services.MailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
+import java.util.Properties;
 
 @Controller
 @AllArgsConstructor
@@ -20,6 +25,7 @@ import javax.validation.Valid;
 public class AuthController {
     private final UserRepository userRepository;
     private final AuthService authService;
+    private final MailService mailService;
 
     @GetMapping("/login")
     public String showLoginForm() {
@@ -59,6 +65,8 @@ public class AuthController {
                 authService.register(authRegisterRequest);
                 model.addAttribute("authRegisterRequest", authRegisterRequest);
                 model.addAttribute("success", "User successfully registered");
+                Optional<User> user = userRepository.findByEmail(authRegisterRequest.getEmail());
+                mailService.sendEmail(user.get(), MailType.REGISTRATION, new Properties());
             } else {
 //                System.out.println("Password is not same");
                 model.addAttribute("authRegisterRequest", authRegisterRequest);
