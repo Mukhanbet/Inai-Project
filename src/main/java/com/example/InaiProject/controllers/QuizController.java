@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/")
 @RequiredArgsConstructor
 public class QuizController {
     private final QuestionService questionService;
@@ -29,7 +28,7 @@ public class QuizController {
         return "redirect:/test-result";
     }
 
-    @GetMapping("/submit-test")
+    @GetMapping("/test-question")
     public String test(Model model){
         List<Question> questions = questionService.get10Question();
         model.addAttribute("question", questions);
