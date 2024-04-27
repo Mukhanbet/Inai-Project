@@ -12,6 +12,7 @@
 </head>
 <script type="text/javascript">
 
+
     var app = angular.module("vacanciesApp", []);
     app.controller("vacanciesCtrl", function($scope, $http){
         $scope.searchFields = {
@@ -58,7 +59,7 @@
 <body ng-app="vacanciesApp" ng-controller="vacanciesCtrl">
 <div class="row">
     <div class="col-9">
-        <table border="1">
+        <table class="table table-dark table-striped-columns">
             <tr>
                 <th>Название</th>
                 <th>График работы</th>

@@ -13,7 +13,6 @@
             font-size: 20px;
             height: 100%;
         }
-
         #div {
             display: block;
             flex-direction: column;
