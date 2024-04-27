@@ -1,0 +1,35 @@
+/* navbar.css */
+.navbar {
+    background-color: #343a40; /* Dark gray background */
+    border-bottom: 2px solid #666; /* Slight border for separation */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #f8f9fa !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #f8f9fa !important; /* Light color for text */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    color: #ffc107 !important; /* Highlight color on hover/focus */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #28a745 !important; /* Active link color */
+}
+
+.navbar-toggler {
+    border-color: #ffc107; /* Toggler icon color */
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #343a40; /* Ensure mobile menu background matches */
+    }
+}

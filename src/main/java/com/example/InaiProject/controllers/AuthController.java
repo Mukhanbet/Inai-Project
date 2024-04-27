@@ -32,6 +32,11 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/do-login")
+    public String showHomePage() {
+        return "index";
+    }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("authRegisterRequest", new AuthRegisterRequest());
@@ -78,6 +83,6 @@ public class AuthController {
 //            e.printStackTrace();
             model.addAttribute("serverError", "Can not registered, error server!");
         }
-        return "register";
+        return "index";
     }
 }

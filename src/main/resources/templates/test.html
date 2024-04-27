@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Тест</title>
+    <link th:href="@{/static/css/navbar.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Тест из 10 вопросов</h1>
 <form th:action="@{/submit-test}" method="post">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Job AI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/auth/login}" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/auth/register}" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/home/index}" href="index.html">Home Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/test-question}" href="test.html">Test</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/vacancies/version/two}" href="vacancies.html">Vacancies</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div th:each="i : ${#numbers.sequence(0, 9)}">
         <p th:text="${question.get(i).getText()}"></p>
         <label><input type="radio" th:name="|question${i}|" value="0">Совершенно не согласен</label>
